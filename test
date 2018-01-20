@@ -1,0 +1,41 @@
+#exit program def
+import atexit
+
+#Generate random interger
+import random
+randomNumVal = random.randint(1,10)
+counter = 0
+
+#defined names and adjectives
+def goodbye(name, adjective):
+    print('Goodbye, %s, it was %s to meet you.' % (name, adjective))
+atexit.register(goodbye,'User')
+#Gets users constent to game and checks agreement value
+while True:
+    try:
+        user_agree = str(input('Do you want to play a game? (y/n) : '))
+        if(user_agree == 'y'):
+            break
+        else:
+            print('Sorry you are in a bad mood please feel free to come back!')
+            #Idle program and provide option to run program again
+    except ValueError:
+        print('You did not enter y for yes or n for no, Try Again!')
+
+#Get User's input value
+print('Please only enter interger values between 1-100')
+while True:
+    try:
+        userNum = int(input('Please enter the first number to add: '))
+        counter = counter + 1
+        if(userNum == randomNumVal):
+            print('You guessed correctly!!')
+            print('Yaaayyy!! You got it after ',counter,'tries!')
+            break
+        else:
+            if(userNum > randomNumVal):
+                print('Opps! You guessed wrong try again. Hint:Maybe lower')
+            else:
+                print('Opps! You Guessed wrong try again. Hint: Maybe higher')
+    except ValueError:
+        print('You did not enter an integer value')
